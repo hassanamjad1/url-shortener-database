@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CS 355 Home Page</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+     h1{
+        padding-top: 20%;
+        color: #f9f9f9;
+        text-align: center;
+     }
+     p{
+        color: #f9f9f9;
+     }
+  </style>
+	<link href="https://fonts.googleapis.com/css?family=Allerta Stencil" rel="stylesheet">
+</head>
+<body>
+   <!-- NAVBAR BEGINS HERE-->
+   <nav id="navbar">
+     <ul>
+       <li class="dropdown">
+         <a href="navbar.html" class="dropbtn">Home</a>
+         <div class ="dropdown-content">
+         </div>
+       </li>
+       <li class="dropdown">
+         <a href="#" class="dropbtn">Course</a>
+         <div class="dropdown-content">
+<!--           <a href="https://www.zybooks.com/" target="_blank">ZyBooks</a>-->
+           <a href="https://tophat.com/" target="_blank">TopHat</a>
+           <a href="https://tinyurl.com/CSCI355-Summer2021" target="_blank">355 Course Drive</a>
+			 <a href="https://tinyurl.com/CSCI323-Summer2021" target="_blank">323 Course Drive</a>
+           <a href="https://www.w3schools.com/" target="_blank">W3Schools</a>
+         </div>
+       </li>
+       <li class="dropdown">
+         <a href="#" class="dropbtn">About</a>
+         <div class="dropdown-content">
+           <a href="dev.html">About The Developer</a>
+           <a href="contact.html">Contact</a>
+         </div>
+       </li>
+       <li class="dropdown"> <a href="#" class="dropbtn">Search</a>
+         <div class="dropdown-content"> 
+			 <a href="fromFile.html">From File</a> 
+			 <a href="googleAPI.html">Google API</a> 
+		 </div>
+       </li>
+      </ul>
+   </nav>
+	<br><br><br>
+	<div class="h"> TEENY&nbsp TINY &nbsp URL &nbsp SHORTENER </div>
+   <!--NAVBAR ENDS HERE-->
+   
+<!--
+   <input type="text" id = "mytext" value="default value">
+   <button onclick= document.getElementById("mytext").value="" >clear</button>
+   <button onclick= document.getElementById("mytext").value=Math.random() >random</button>
+-->
+	<div class="main_div">
+
+		<div class="inner_div" >
+			<p class= "samerow">  <i>Enter Url</i> &nbsp&nbsp  </p>
+			<input class= "samerow" type="text" id = "urlInput" placeholder = "www.example.com" >
+		</div >
+		<br>
+		<div style="text-align:center;">
+    		<button onClick="outputUrl()" >Generate </button>
+			&nbsp
+    		<button onClick="clearUrl()">New Url</button>
+		</div>
+	
+		<div class="inner_div">
+			<p class= "samerow"> <strong>Output</strong>  &nbsp&nbsp&nbsp&nbsp  </p>
+			<input class= "samerow" type="text" id="output_URL"  >
+		</div>
+		
+			
+		
+	
+	</div>
+	
+	<script>
+		function getRandomAscii(){
+		  var randNum;
+		  var valid = true;
+		  while(valid){
+			randNum = Math.floor(Math.random()*128)
+			if( inRange(randNum)){
+			  return String.fromCharCode(randNum);
+			  valid = false;
+
+			}
+
+		  }
+		}
+		
+		function inRange(num){
+		  if((num>=48&&num<=57)||(num>=65&&num<=90)||(num>=97&&num<=122)){
+			return true;
+		  }else{
+				  return false ;
+		  }
+		}
+		
+		function outputUrl(){
+			var n = 8;
+			var outputStr = [];
+			var input = document.getElementById("output_URL")
+			for(var i = 1; i <= n ; i++){
+				outputStr.push(getRandomAscii()) ;
+			}
+			input.value = "url.com/"+outputStr.join("");
+		}
+		function clearUrl(){
+			var input = document.getElementById("output_URL")
+			input.value = "";
+		}
+	
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
