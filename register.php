@@ -62,7 +62,7 @@
 
 
                             <input class="form-control" type="text" name="login" placeholder="Login " required>
-                            <input class="form-control" type="password" name="password" id = "password" placeholder="Password" required>
+                            <input class="form-control" type="password" name="pwd" id = "password" placeholder="Password" required>
                             <input class="form-control" type="password" name="confirmpassword" id = "confirmpassword" placeholder="Confirm Password" onChange = "checkPasswordMatch();" required >
                             <div id = "divCheckPasswordMatch" style = "color: white;" ></div>
                             <div class="form-button">
