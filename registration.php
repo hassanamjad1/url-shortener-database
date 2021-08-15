@@ -46,9 +46,9 @@ if( count($errors) == 0 ) {
         if (mysqli_num_rows($results)) {
             $_SESSION['user_id'] = mysqli_fetch_array($results)['user_id'];
             $_SESSION['login'] = mysqli_fetch_array($results)['login'];
-            header("Location: navbar.html");
+            header("Location: navbar.php");
             echo 'you are now registered and logged in';
-            header("Location: navbar.html");
+            header("Location: navbar.php");
         }
 
     }

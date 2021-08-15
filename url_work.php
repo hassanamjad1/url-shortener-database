@@ -25,21 +25,21 @@ if( empty($url_short))
 
 if( count($errors) == 0 ) {
     // $password = md5($password);
-    $query = "Select * from users where url_long = '$url_long'";
+    $query = "Select * from url where url_long = '$url_long'";
     $results = mysqli_query($db, $query);
     if (mysqli_num_rows($results)) {
         echo 'this url already exist';
     } else {
-        $query = "Insert into users (url_long,url_short) values ( '$url_long','$url_short' )";
+        $query = "Insert into url (url_long,url_short) values ( '$url_long','$url_short' )";
         mysqli_query($db, $query);
-        $query = "Select * from users where url_long = '$url_long' ";
+        $query = "Select * from url where url_long = '$url_long' ";
         $results = mysqli_query($db, $query);
         if (mysqli_num_rows($results)) {
             $_SESSION['url_id'] = mysqli_fetch_array($results)['url_id'];
             $_SESSION['url_long'] = mysqli_fetch_array($results)['url_long'];
-            header("Location: nav_temp.html");
+            header("Location: navbar.php");
             echo 'you are now registered and logged in';
-            header("Location: nav_temp.html");
+            header("Location: navbar.php");
         }
 
     }
