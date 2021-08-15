@@ -6,11 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CS 355 Home Page</title>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/fontawesome-all.min.css">
     <link rel="stylesheet" type="text/css" href="css/iofrm-style.css">
     <link rel="stylesheet" type="text/css" href="css/iofrm-theme2.css">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <style>
      h1{
@@ -85,6 +85,7 @@
             <div class="inner_div" >
                 <p class= "samerow">  <i>Enter Url</i> &nbsp&nbsp  </p>
                 <input class= "samerow" type="text" name="url_long" id = "urlInput" placeholder="Long url" >
+                <button  id="submit" type="submit" name = "signup" onClick="validate()">Validate</button>
                 <!-- <input class="form-control" type="text" name="url_long" placeholder="Long url" required> -->
             </div>
             <br>
@@ -97,7 +98,7 @@
             <div class="inner_div">
                 <p class= "samerow"> <strong>Output</strong>  &nbsp&nbsp&nbsp&nbsp  </p>
                 <input class= "samerow" type="text" name="url_short" id="output_URL" placeholder="Short url"   >
-                <button  id="submit" type="submit" name = "signup" onClick="outputUrl()">Validate</button>
+                <!-- <button  id="submit" type="submit" name = "signup" onClick="outputUrl()">Validate</button> -->
                 <!-- <input class="form-control" type="text" name="url_short" placeholder="Short url" required> -->
             </div>
 <!-- //////////////////////////////////new///////////////////////////////////// -->
@@ -107,9 +108,7 @@
             <input class="form-control" type="password" name="pwd" id = "password" placeholder="Password" required>
             <input class="form-control" type="password" name="confirmpassword" id = "confirmpassword" placeholder="Confirm Password" onChange = "checkPasswordMatch();" required > -->
             <!-- <div id = "divCheckPasswordMatch" style = "color: white;" ></div> -->
-            <div class="form-button">
-                <!-- <button id="submit" type="submit" name = "signup" class="ibtn">Register</button> -->
-            </div>
+ 
         </form>
 		<!-- //////////////////////   -->
 	
@@ -149,8 +148,8 @@
               echo 
               "<tr>
               <td bgcolor='#fcba03'>" . $row["url_id"] ."</td>
-              <td bgcolor='#ca03fc'>". $row["url_long"] ."</td>
-              <td bgcolor='#8d05e8'>". $row["url_short"] ."</td>
+              <td bgcolor='#ca03fc'><u>". $row["url_long"] ."</u></td>
+              <td bgcolor='#8d05e8'><u>". $row["url_short"] ."</u></td>
               </tr>" ;
             }
             echo "</table>";
@@ -195,9 +194,17 @@
 			for(var i = 1; i <= n ; i++){
 				outputStr.push(getRandomAscii()) ;
 			}
-			// output.value = "tiny.com/"+outputStr.join("");
-      output.value = "tiny.com";
+			output.value = "tiny.com/"+outputStr.join("");
+      // output.value = "tiny.com";
 		}
+    function validate(){
+      var text=document.getElementById("urlInput").value;
+      var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+      var text1=text.replace(exp, "<a href='$1'>$1</a>");
+      var exp2 =/(^|[^\/])(www\.[\S]+(\b|$))/gim;
+      text.value = text1.replace(exp2, '$1<a target="_blank" href="http://$2">$2</a>');
+      outputUrl()
+    }
 
 
 
